@@ -11,7 +11,6 @@ const User = require('../../models/User');
 // @route     POST api/users
 // @desc      Register User
 // @access    Public
-
 router.post('/', 
 [
     check('name', 'Name is required').not().isEmpty(),
@@ -39,7 +38,7 @@ async (req,res) => {
             s: '200',
             r: 'pg',
             d: 'mm'
-        })
+        }, true)
 
         user = new User({
             name, 
@@ -63,7 +62,7 @@ async (req,res) => {
         }
 
         jwt.sign(payload, config.get('jwtToken'), {
-            expiresIn: 360000
+            expiresIn: 3600000
         }, (err, token) => {
             if (err) throw err;
             res.json({ token })
