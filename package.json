@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client": "yarn start --prefix client",
+    "dev": "concurrently \"yarn server\" \"(cd client && yarn start)\""
   },
   "author": "Reynaldo Borges",
   "license": "MIT",
